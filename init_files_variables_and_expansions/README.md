@@ -1,0 +1,3 @@
+# Holberton Shell Scripts
+
+This directory contains all the shell scripts...
