@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Stops the 7-highlander process without using kill or killall
+
+# Loop through all PIDs
+for pid in /proc/[0-9]*; do
+    # Read command line of the process
+    cmd=$(cat "$pid/cmdline" 2>/dev/null)
+    # If it contains 7-highlander, send SIGTERM
+    if [[ $cmd == *"7-highlander"* ]]; then
+        # Send SIGTERM using pkill-style bash approach
+        kill -s TERM "$pid" 2>/dev/null
+    fi
+done
